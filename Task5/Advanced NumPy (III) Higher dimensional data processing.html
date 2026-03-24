@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html><head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <link rel="stylesheet" href="/shared/HTML-Template-Library/HTML-Templates-V3/pages/../_assets/css/rug-content.css">
+   <title>Content</title>
+</head><body><div>
+<h2>5.3. To&nbsp;<span id="index-10"></span>higher dimensions<a title="Link to this heading" href="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/Tasks/Task5.html#index-9"></a></h2>
+<p>So far, we have been mostly working on one dimensional data structures, i.e. one dimensional array. As an astronomer, we often work on one-dimensional data like light curve and spectroscopic data. Furthermore, we also deal with images which are 2-dimensional data structure, even data cubes, e.g.&nbsp;<a href="https://www.eso.org/public/teles-instr/technology/ifu/">Integral Field Units (IFU)</a>&nbsp;which is in 3-dimensional data structure. If a telescope can also distinguish polarization, we even need a 4-dimensional data structure. In this section we learn how to create arrays with a shape and show how to visualize 2-dimensional data with Matplotlib methods.</p>
+<section id="id13">
+<h3>5.3.1.&nbsp;Useful links<a title="Link to this heading" href="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/Tasks/Task5.html#id13"></a></h3>
+<ol>
+<li>
+<p><a href="https://numpy.org/doc/stable/user/quickstart.html">NumPy Quickstart</a></p>
+</li>
+<li>
+<p>List with methods and functions of the ndarray object:&nbsp;<span style="font-size: 16px;"><a title="(in NumPy v2.3)" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray"><code>numpy.ndarray</code></a></span></p>
+</li>
+<li>
+<p><a href="https://docs.scipy.org/doc/numpy/reference/routines.math.html">NumPy Mathematical functions</a></p>
+</li>
+<li>
+<p>Documentation about NumPy number types with handy table:&nbsp;<a href="https://docs.scipy.org/doc/numpy/user/basics.types.html">Data types</a>&nbsp;.</p>
+</li>
+</ol>
+<br>
+<h4><span style="color: #006fbf; font-size: 19px;">Notebook: N-dimensional data structures</span></h4>
+<div>
+<div><span style="color: #006fbf; font-size: 19px;">Open the non-interactive version of the notebook:&nbsp;<a href="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/Notebooks/higherDims.html" style="color: #006fbf;">higherDims.html</a></span></div>
+<div><span style="color: #006fbf; font-size: 19px;">or download and open:&nbsp;<a href="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_downloads/8801c180dc569c815d09eafe0a77ad50/higherDims.ipynb" download="" style="color: #006fbf;"><code>higherDims.ipynb</code></a></span></div>
+<div><span style="color: #006fbf; font-size: 19px;"></span></div>
+<div><span style="color: #006fbf; font-size: 19px;"></span></div>
+</div>
+<div id="id34"></div>
+<div><hr></div>
+</section>
+</div>
+<div></div>
+<div>
+<div id="id34">
+<div><strong><span style="color: #004489;">Question 5.4&nbsp;:&nbsp;Insert an array with slice syntax</span></strong></div>
+<br>
+<div><span style="color: #004489;"><img src="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/question013.png" alt="../_images/question013.png"></span>
+<p><span style="color: #004489;">Given the Python lines:</span></p>
+<ul style="list-style-type: square;">
+<li style="color: #004489;">
+<p><span style="color: #004489; font-size: 16px;"><code>A&nbsp;=&nbsp;numpy.zeros((5,4))</code></span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489; font-size: 16px;"><code>B&nbsp;=&nbsp;numpy.arange(6).reshape(3,2)+10</code></span></p>
+</li>
+</ul>
+<p><span style="color: #004489;">What is the command that uses slicing syntax to replace data in the center of 2D array&nbsp;<span style="font-size: 16px;"><code>A</code></span>&nbsp;(so that all border pixels keep their value 0) with data in array&nbsp;<span style="font-size: 16px;"><code>B</code></span>. First print&nbsp;<span style="font-size: 16px;"><code>A</code></span>&nbsp;and then&nbsp;<span style="font-size: 16px;"><code>B</code>&nbsp;</span>to visualize the problem.</span><br><br></p>
+<hr></div>
+</div>
+<div id="id35">
+<div><strong><span style="color: #004489;">Question 5.5&nbsp;:&nbsp;Multi dimensional indexing</span></strong></div>
+<br>
+<div><span style="color: #004489;"><img src="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/question013.png" alt="../_images/question013.png"></span>
+<p><span style="color: #004489;">Create an array M with 60 numbers (starting with 0) with&nbsp;<span style="font-size: 16px; color: #e87511;"><a title="(in NumPy v2.3)" href="https://numpy.org/doc/stable/reference/generated/numpy.arange.html#numpy.arange" style="color: #e87511;"><code>numpy.arange()</code></a></span>! Give it shape (3,4,5). Print out the elements of the multidimensional array M and the element M that corresponds to the number 33. (e.g.:&nbsp;<span style="font-size: 16px; color: #e87511;"><code>print(...)</code></span>&nbsp;must print 33. What is on ‘…’?)</span></p>
+<hr></div>
+</div>
+</div>
+<div></div>
+<div>
+<h3>5.3.2.&nbsp;<span id="index-11"></span>Concatenation of arrays<a title="Link to this heading" href="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/Tasks/Task5.html#concatenation-of-arrays"></a></h3>
+<p>Often you have a situation where you need more space in an array because some elements need to be appended. In the notebook we discussed function&nbsp;<span style="font-size: 16px;"><a title="(in NumPy v2.3)" href="https://numpy.org/doc/stable/reference/generated/numpy.append.html#numpy.append"><code>numpy.append()</code></a></span>&nbsp;which allows to append one or more values to an array and creates a new array for the result. If you have multiple arrays to append, then the function&nbsp;<a title="(in NumPy v2.3)" href="https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html#numpy.concatenate"><code><span style="font-size: 16px;">numpy.concatenate()</span></code></a>&nbsp;is more convenient:</p>
+<div>
+<div>
+<pre class="d2l-code"><code class="language-python">import numpy as np
+
+x1 = np.array([1,2,3])
+x2 = np.array([4,5,6])
+x3 = np.array([7,8,9])
+
+X = np.concatenate([x1,x2,x2])
+print(X)</code></pre>
+<pre></pre>
+<p></p>
+<hr>
+<pre></pre>
+</div>
+</div>
+<div id="id36">
+<div><strong><span style="color: #004489;">Question 5.6&nbsp;:&nbsp;Array concatenation</span></strong></div>
+<br>
+<div><img src="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/question013.png" alt="../_images/question013.png">&nbsp;<a href="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/milestone.jpeg"><img style="height: 32px;" src="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/milestone.jpeg" alt="../_images/milestone.jpeg"></a>
+<p><span style="color: #004489;">1. Basic 1D concatenation</span></p>
+<pre class="d2l-code"><code class="language-python">import numpy as np
+
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])</code></pre>
+<ul>
+<li><span style="color: #004489;"><span style="color: #004489;">Print <span style="font-size: 16px; color: #e87511;"><code>np.concatenate((a, b))</code></span></span></span></li>
+<li><span style="color: #004489;">What is the shape of this result?&nbsp;</span></li>
+</ul>
+<p><span style="color: #004489;">2. Row and Column concatenation&nbsp;</span></p>
+<pre class="d2l-code"><code class="language-python">import numpy as np
+
+a = np.array([[1, 2], [3, 4]])
+b = np.array([[5, 6], [7, 8]])</code></pre>
+<ul>
+<li style="color: #004489;"><span style="color: #004489;">What is the shape difference between the arrays in question 1 and 2?&nbsp;</span></li>
+<li style="color: #004489;"><span style="color: #004489;">Try <span style="font-size: 16px; color: #e87511;"><code>np.concatenate((a, b))</code></span></span></li>
+<li style="color: #004489;"><span style="color: #004489;">Try &nbsp;<span style="font-size: 16px; color: #e87511;"><code>np.concatenate((a, b), axis=0)</code></span></span></li>
+<li><span style="color: #004489;">Try &nbsp;<span style="font-size: 16px; color: #e87511;"><code>np.concatenate((a, b), axis=1)</code></span></span><span style="color: #004489;"><span style="font-size: 16px; color: #e87511;"><code></code></span></span></li>
+<li style="color: #004489;"><span style="color: #004489;">What is the difference between them?&nbsp;</span></li>
+</ul>
+<hr>
+<p></p>
+<h2>5.4.&nbsp;NumPy&nbsp;<span id="index-12"></span>array attributes and methods<a title="Link to this heading" href="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/Tasks/Task5.html#numpy-array-attributes-and-methods"></a></h2>
+<section id="an-overview-of-array-attributes">
+<h3>5.4.1.&nbsp;An overview of array attributes<a title="Link to this heading" href="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/Tasks/Task5.html#an-overview-of-array-attributes"></a></h3>
+<p>Some common ones are listed below. A complete overview of attributes and methods of NumPy arrays can be found at&nbsp;<span style="font-size: 16px;"><a title="(in NumPy v2.3)" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray"><code>numpy.ndarray</code></a></span>.</p>
+<table id="id37"><colgroup><col style="width: 191.75px;"><col style="width: 575.25px;"></colgroup>
+<thead>
+<tr>
+<th>
+<p>Attribute</p>
+</th>
+<th>
+<p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<p>ndim</p>
+</td>
+<td>
+<p>The number of axes (dimensions) of the array. In the Python world, the number of dimensions is referred to as rank.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>shape</p>
+</td>
+<td>
+<p>The dimensions of the array. This is a tuple of integers indicating the size of the array in each dimension. For a matrix with n rows and m columns, shape will be (n,m). The length of the shape tuple is therefore the rank, or number of dimensions, ndim.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>size</p>
+</td>
+<td>
+<p>The total number of elements of the array. This is equal to the product of the elements of shape.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>dtype</p>
+</td>
+<td>
+<p>An object describing the type of the elements in the array. One can create or specify dtype’s using standard Python types. Additionally NumPy provides types of its own. numpy.int32, numpy.int16, and numpy.float64 are some examples.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>itemsize</p>
+</td>
+<td>
+<p>The size in bytes of each element of the array. For example, an array of elements of type float64 has itemsize 8 (=64/8), while one of type complex32 has itemsize 4 (=32/8). It is equivalent to ndarray.dtype.itemsize.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>nbytes</p>
+</td>
+<td>
+<p>Total number of bytes consumed by the elements of the array.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>data</p>
+</td>
+<td>
+<p>The buffer containing the actual elements of the array. Normally, we won’t need to use this attribute because we will access the elements in an array using indexing facilities.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>flags</p>
+</td>
+<td>
+<p>Information about the memory layout of the array.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div id="id38">
+<div></div>
+<div><hr></div>
+<div><strong><span style="color: #004489;">Question 5.7 : Using ndarray attributes</span></strong></div>
+<br>
+<div><span style="color: #004489;"><img src="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/question013.png" alt="../_images/question013.png"></span>
+<p><span style="color: #004489;">What’s the memory usage (i.e. number of bytes in memory) of array:</span></p>
+<div>
+<div>
+<pre class="d2l-code"><code class="language-python">a = numpy.arange(60, dtype=np.complex)</code></pre>
+</div>
+</div>
+<p><span style="color: #004489;">And for</span></p>
+<div>
+<div>
+<pre class="d2l-code"><code class="language-python">a = numpy.arange(60, dtype=np.int8)</code></pre>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+<div id="id39"><hr></div>
+</section>
+<p></p>
+<div><span style="color: #004489;"><strong>Question 5.8 : Exploring image noise</strong><br><br></span></div>
+<div><span style="color: #004489;"><img src="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/question013.png" alt="../_images/question013.png">&nbsp;<a href="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/homework.jpg" style="color: #004489;"><img style="height: 32px;" src="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/homework.jpg" alt="../_images/homework.jpg"></a></span>
+<p><span style="color: #cd2026;">Coursework</span></p>
+<ul style="list-style-type: square;">
+<li style="color: #004489;">
+<p><span style="color: #004489;">Create a two dimensional NumPy array with 200 rows and 300 columns filled with pixel values drawn from the normal distribution&nbsp;<span style="font-size: 16px;"><span style="color: #e87511;"><code>numpy.random.normal()</code></span>&nbsp;</span>with a mean of 0 and standard deviation 1.0.</span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">Use&nbsp;<span style="font-size: 16px; color: #e87511;"><code>plt.imshow()</code></span> to plot the image. The figure must be 8 inches wide and 4 inches high.</span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">Use color map&nbsp;<span style="font-size: 16px; color: #e87511;"><code>jet</code></span>&nbsp;for your image.</span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">Take a small two dimensional slice (e.g. 30x30 pixels) somewhere in the image and calculate the mean and standard deviation of the pixel values in your slice.</span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">Are this mean and standard deviation what you expected?</span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">Plot a histogram of all image values in 50 bins. To not overlap with the previous plot, you probably need to create a new plot <span style="font-size: 16px; color: #e87511;"><code>plt.figure()</code></span>. What distribution should you recognise?</span></p>
+</li>
+</ul>
+<hr></div>
+<p></p>
+<section id="numpy-array-attributes-and-methods">
+<section id="an-overview-of-array-attributes">
+<div id="id40">
+<div><strong><span style="color: #004489;">Question 5.9&nbsp;:&nbsp;Exploring artificial image colors</span></strong></div>
+<br>
+<div><span style="color: #004489;"><img src="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/question013.png" alt="../_images/question013.png">&nbsp;<a href="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/milestone.jpeg" style="color: #004489;"><img style="height: 32px;" src="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/milestone.jpeg" alt="../_images/milestone.jpeg"></a></span>
+<ul style="list-style-type: square;">
+<li style="color: #004489;">
+<p><span style="color: #004489;">Download the image&nbsp;<span style="font-size: 16px; color: #e87511;"><a href="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_downloads/3cdf2b06de192b989219f8b2d0715800/m101BW.jpg" download="" style="color: #e87511;"><code>m101BW.jpg</code></a></span></span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">Import library&nbsp;<span style="font-size: 16px; color: #e87511;"><code>imageio</code></span>&nbsp;in your programme.</span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">Use&nbsp;<span style="font-size: 16px; color: #e87511;"><code>imageio.imread()</code></span>&nbsp;to read the data in a NumPy array.</span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">Use&nbsp;<span style="font-size: 16px; color: #e87511;"><code>plt.imshow()</code></span>&nbsp;to plot an image of this data using the color lookup table&nbsp;<span style="font-size: 16px; color: #e87511;"><code>jet</code></span>.</span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">Make a contour plot. Use the argument&nbsp;<span style="font-size: 16px; color: #e87511;"><code>levels</code></span>&nbsp;to avoid plotting contours in the area with noises.</span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">Filter the data that <strong>only the data with highest 10 percent intensity</strong> is used in a new image and plot that image.</span></p>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="d-data-structures"><hr></section>
+<p></p>
+<h2>5.5.&nbsp;<span id="index-13"></span>3D data structures<a title="Link to this heading" href="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/Tasks/Task5.html#d-data-structures"></a></h2>
+<p>As an astronomer, the most common data we use are images, which is two dimensional. However, radio data and IFU data (<a href="https://www.eso.org/public/teles-instr/technology/ifu/">Integral Field Units</a>) have three dimensional structures (datacube). These data are also taken at different frequencies which form the third dimension on an 2D images (see illustration below).</p>
+<p>In this section we show how to use NumPy arrays to analyze and process astronomical data. The axes&nbsp;<span style="font-size: 16px;"><code>x</code>,&nbsp;<code>y</code></span>&nbsp;and&nbsp;<span style="font-size: 16px;"><code>z</code></span>&nbsp;correspond usually with <strong><em>R.A. (Right Ascension), Dec. (Declination) </em></strong>and<strong><em> Freq. (frequency)</em></strong>.</p>
+<p><img alt="../_images/imagecube.png" src="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/imagecube.png" data-d2l-editor-default-img-style="true" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"></p>
+<p><img alt="../_images/datacube21.png" src="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/datacube21.png" width="542" height="466" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<hr>
+<div id="id42">
+<div><strong><span style="color: #004489;">Question 5.10&nbsp;:&nbsp;Slicing in a multi dimensional array</span></strong></div>
+<br>
+<div><span style="color: #004489;"><img src="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/question013.png" alt="../_images/question013.png">&nbsp;<a href="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/milestone.jpeg" style="color: #004489;"><img style="height: 32px;" src="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/milestone.jpeg" alt="../_images/milestone.jpeg"></a></span>
+<p><span style="color: #004489;">Slice an N-dim array to obtain a z-profile.</span></p>
+<ul style="list-style-type: square;">
+<li style="color: #004489;">
+<p><span style="color: #004489;">Download ASCII file&nbsp;<span style="font-size: 16px; color: #e87511;"><a href="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_downloads/4aa2c8e7853c2ab0add09f62a00193cc/ngc6946.txt" download="" style="color: #e87511;"><code>ngc6946.txt</code></a></span>.</span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">This data represents part of a data structure with 3 dimensions. It is a cube with 40 planes with 50 rows and each row has 70 columns.</span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">Create code in which you read the data from&nbsp;<span style="font-size: 16px; color: #e87511;"><code>ngc6946.txt</code></span>&nbsp;into a NumPy array.</span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">Bring the data in the right shape.</span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">Print the data of the z-profile in the middle (or near the middle) of the x,y plane.</span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">A z-profile is a line with data on the z axis at a fixed point in (x,y). Calculate elementary statistics for this profile (<span style="color: #e87511;">max, min, sum, mean, standard deviation</span>).</span></p>
+</li>
+<li style="color: #004489;">
+<p><span style="color: #004489;">Create a plot of this profile using&nbsp;<span style="font-size: 16px;"><code>plot()</code>&nbsp;</span>and add statistical information on the plot using&nbsp;<a title="" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.text.html" style="color: #004489;"><code><span style="font-size: 16px;">text()</span></code></a>.</span></p>
+</li>
+</ul>
+<hr></div>
+</div>
+<div id="id43">
+<div><strong><span style="color: #004489;">Question 5.11&nbsp;:&nbsp;Extract images of a 3D cube</span></strong></div>
+<br>
+<div><span style="color: #004489;"><img src="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/question013.png" alt="../_images/question013.png">&nbsp;<a href="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/milestone.jpeg" style="color: #004489;"><img style="height: 32px;" src="https://www.astro.rug.nl/intranet/courses/PROGNUMNEW/2026/build/html/_images/milestone.jpeg" alt="../_images/milestone.jpeg"></a></span>
+<p><span style="color: #004489;">Plot the first plane of a data cube.</span></p>
+<ul style="list-style-type: square;">
+<li>
+<p><span style="color: #004489;">Use the data from&nbsp;<span style="font-size: 16px; color: #e87511;"><code>ngc6946.txt</code></span>, and reshpae it as instructed in previous question.</span></p>
+</li>
+<li>
+<p><span style="color: #004489;">Extract the first plane, which represents an image, from the data.</span></p>
+</li>
+<li>
+<p><span style="color: #004489;">Plot an image for this data with Matplotlib with&nbsp;<span style="font-size: 16px; color: #e87511;"><code>plt.imshow()</code></span>&nbsp;and add colour bar.</span></p>
+</li>
+<li>
+<p><span style="color: #004489;">Make sure that the origin of your image is in the lower left corner of the image. Check argument <span style="font-size: 16px; color: #e87511;"><code>origin</code></span>&nbsp;in the&nbsp;<span style="font-size: 16px; color: #e87511;"><code>imshow()</code></span>.</span></p>
+</li>
+<li>
+<p><span style="color: #004489;">Calculate the mean and standard deviation of the data and draw contours with 3 levels:&nbsp;<span style="font-size: 16px; color: #e87511;"><code>[mean,&nbsp;mean+std,&nbsp;mean+2*std]</code></span>.</span></p>
+</li>
+</ul>
+<hr></div>
+</div>
+<p><br><br></p>
+</div>
+</div>
+</div></body></html>
